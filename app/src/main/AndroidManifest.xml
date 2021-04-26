@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.beautysalon">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/logo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BeautySalon"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.activity.HistoryReservationActivity"></activity>
+        <activity android:name=".ui.activity.UserCommentActivity" />
+        <activity android:name=".ui.activity.StylistInformationActivity" />
+        <activity android:name=".ui.activity.MyCommentActivity" />
+        <activity android:name=".ui.activity.ReserveDetailActivity" />
+        <activity android:name=".ui.activity.MyReservationActivity" />
+        <activity android:name=".ui.activity.UnpaidActivity" />
+        <activity android:name=".ui.activity.PaySuccessActivity" />
+        <activity android:name=".ui.activity.PayActivity" />
+        <activity android:name=".ui.activity.MyBalanceActivity" />
+        <activity android:name=".ui.activity.TopUpActivity" />
+        <activity android:name=".ui.activity.MyPointsActivity" />
+        <activity android:name=".ui.activity.SignInActivity" />
+        <activity android:name=".ui.activity.MyCouponActivity" />
+        <activity android:name=".ui.activity.CouponReceiveActivity" />
+        <activity android:name=".ui.activity.StylistDetailActivity" />
+        <activity android:name=".ui.activity.StylistMainActivity" />
+        <activity android:name=".ui.activity.MyInformationActivity" />
+        <activity android:name=".ui.activity.StylistRegisterActivity" />
+        <activity
+            android:name=".ui.activity.SplashActivity"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.activity.UserRegisterActivity" />
+        <activity android:name=".ui.activity.LoginActivity" />
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:launchMode="singleTask" />
+    </application>
+
+</manifest>

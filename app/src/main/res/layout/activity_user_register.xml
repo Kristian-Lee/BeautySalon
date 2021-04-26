@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.UserRegisterActivity"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:background="@drawable/shape_toolbar"
+        android:layout_height="0dp" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/shape_toolbar"
+        app:title="美容美发会员系统"
+        app:titleTextColor="@color/white"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="欢迎注册新用户"
+            android:textSize="30sp"
+            android:textColor="#333333"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.66"
+        android:orientation="vertical">
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:hint="请输入用户名"
+            android:inputType="text"
+            app:met_iconPadding="5dp"
+            app:met_floatingLabel="highlight"
+            app:met_iconLeft="@drawable/user"
+            app:met_clearButton="true"
+            app:met_singleLineEllipsis="true"
+            app:met_maxCharacters="10"/>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/password"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:inputType="textPassword"
+            android:hint="请输入密码"
+            app:met_iconLeft="@drawable/password"
+            app:met_iconPadding="5dp"
+            app:met_floatingLabel="highlight"
+            app:met_clearButton="true"
+            app:met_singleLineEllipsis="true" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/confirm_password"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:inputType="textPassword"
+            android:hint="请再次输入密码"
+            app:met_iconLeft="@drawable/password"
+            app:met_iconPadding="5dp"
+            app:met_floatingLabel="highlight"
+            app:met_clearButton="true"
+            app:met_singleLineEllipsis="true" />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/phone"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:inputType="number"
+            android:hint="请输入联系电话"
+            app:met_iconLeft="@drawable/phone"
+            app:met_iconPadding="5dp"
+            app:met_floatingLabel="highlight"
+            app:met_clearButton="true"
+            app:met_singleLineEllipsis="true"
+            app:met_maxCharacters="11"
+            app:met_helperText="11位数字"/>
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/hobby"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:hint="请输入兴趣偏好"
+            app:met_iconLeft="@drawable/hobby"
+            app:met_iconPadding="5dp"
+            app:met_floatingLabel="highlight"
+            app:met_clearButton="true"
+            app:met_singleLineEllipsis="true" />
+
+        <com.manojbhadane.QButton
+            android:id="@+id/btn_register"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="40dp"
+            app:qb_backgroundColor="@color/colorAccent"
+            android:text="确认注册"/>
+
+    </LinearLayout>
+</LinearLayout>

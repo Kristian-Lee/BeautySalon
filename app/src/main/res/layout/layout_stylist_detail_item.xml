@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="10dp"
+        android:id="@+id/card"
+        android:padding="4dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="20dp">
+
+            <cn.gavinliu.android.lib.shapedimageview.ShapedImageView
+                android:id="@+id/avatar"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="15dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/dog"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.092"
+                app:round_radius="6dp"
+                app:shape_mode="round_rect" />
+
+            <TextView
+                android:id="@+id/real_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="36dp"
+                android:gravity="center"
+                android:text="趋利避害趋利避害潮流"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/avatar"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="手机号："
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/avatar"
+                app:layout_constraintTop_toBottomOf="@+id/real_name"
+                app:layout_constraintVertical_bias="0.077" />
+
+            <TextView
+                android:id="@+id/working_years_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="28dp"
+                android:text="工龄："
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/avatar" />
+
+            <TextView
+                android:id="@+id/working_years"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="62dp"
+                android:layout_marginTop="28dp"
+                android:text=""
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/avatar" />
+
+            <TextView
+                android:id="@+id/rate_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="5dp"
+                android:text="好评度："
+                app:layout_constraintEnd_toStartOf="@+id/rate"
+                app:layout_constraintTop_toBottomOf="@+id/avatar" />
+
+            <com.willy.ratingbar.ScaleRatingBar
+                android:id="@+id/rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                app:layout_constraintBottom_toBottomOf="@+id/working_years"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/working_years"
+                app:srb_clearRatingEnabled="true"
+                app:srb_clickable="true"
+                app:srb_isIndicator="true"
+                app:srb_minimumStars="1"
+                app:srb_numStars="5"
+                app:srb_scrollable="true"
+                app:srb_starHeight="15dp"
+                app:srb_starPadding="5dp"
+                app:srb_starWidth="15dp"
+                app:srb_stepSize="0.5" />
+
+            <TextView
+                android:id="@+id/speciality_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:text="特长："
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/working_years" />
+
+            <TextView
+                android:id="@+id/speciality"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="62dp"
+                android:text=""
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/working_years" />
+
+            <TextView
+                android:id="@+id/barbershop_name_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="门店:"
+                app:layout_constraintStart_toStartOf="@+id/rate_label"
+                app:layout_constraintTop_toBottomOf="@+id/working_years" />
+
+            <TextView
+                android:id="@+id/barbershop_name"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="5dp"
+                android:text=""
+                app:layout_constraintStart_toStartOf="@+id/rate"
+                app:layout_constraintTop_toBottomOf="@+id/working_years" />
+
+            <TextView
+                android:id="@+id/up_to"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:text="地址："
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/speciality" />
+
+            <TextView
+                android:id="@+id/barbershop_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="62dp"
+                android:layout_marginEnd="15dp"
+                android:singleLine="true"
+                android:text=""
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/up_to" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="用户评论"
+        android:textSize="16sp"/>
+
+
+</LinearLayout>

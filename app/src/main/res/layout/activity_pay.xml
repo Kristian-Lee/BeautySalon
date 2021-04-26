@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:background="@drawable/shape_toolbar"
+        android:layout_height="0dp" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/shape_toolbar"
+        android:theme="@style/toolbarMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:title=" "
+        app:titleTextColor="@color/white">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:text="提交服务单"
+            android:textColor="@android:color/white"
+            android:textSize="21sp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="1000dp">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:padding="4dp"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="36dp"
+                        android:layout_marginTop="28dp"
+                        android:text="服务单编号："
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/orderId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="36dp"
+                        android:text="00111"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView12"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView12"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="发型师："
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="@+id/textView12"
+                        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+                    <TextView
+                        android:id="@+id/stylistRealName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="蔡敏敏"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView13"
+                        app:layout_constraintEnd_toEndOf="@+id/orderId"
+                        app:layout_constraintTop_toTopOf="@+id/textView13" />
+
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="所属门店:"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="@+id/textView13"
+                        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+                    <TextView
+                        android:id="@+id/barbershopName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="美容美发"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView18"
+                        app:layout_constraintEnd_toEndOf="@+id/stylistRealName"
+                        app:layout_constraintTop_toTopOf="@+id/textView18" />
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="门店地址:"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="@+id/textView18"
+                        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+                    <TextView
+                        android:id="@+id/barbershopAddress"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="dsggdsgdgsdgsdiohnnoioiiiiooosgd"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="@+id/barbershopName"
+                        app:layout_constraintTop_toTopOf="@+id/textView19" />
+
+                    <TextView
+                        android:id="@+id/textView23"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="选择服务:"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="@+id/textView19"
+                        app:layout_constraintTop_toTopOf="@+id/services" />
+
+                    <TextView
+                        android:id="@+id/services"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:gravity="right"
+                        android:text="洗发、染发"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="@+id/barbershopAddress"
+                        app:layout_constraintTop_toBottomOf="@+id/barbershopAddress" />
+
+                    <TextView
+                        android:id="@+id/textView25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="预计花费时间:"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="@+id/textView23"
+                        app:layout_constraintTop_toTopOf="@+id/takeUp" />
+
+                    <TextView
+                        android:id="@+id/takeUp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="130分钟"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="@+id/services"
+                        app:layout_constraintTop_toBottomOf="@+id/services" />
+
+                    <TextView
+                        android:id="@+id/textView27"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="预约时间:"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="@+id/textView25"
+                        app:layout_constraintTop_toTopOf="@+id/reserveDate" />
+
+                    <TextView
+                        android:id="@+id/reserveDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="2021-04-11 19:50"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="@+id/takeUp"
+                        app:layout_constraintTop_toBottomOf="@+id/takeUp" />
+
+                    <TextView
+                        android:id="@+id/textView40"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="创建时间:"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="@+id/textView27"
+                        app:layout_constraintTop_toTopOf="@+id/createDate" />
+
+                    <TextView
+                        android:id="@+id/createDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="2021-04-11 19:50"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="@+id/reserveDate"
+                        app:layout_constraintTop_toBottomOf="@+id/reserveDate" />
+
+                    <TextView
+                        android:id="@+id/textView33"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="总价"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="@+id/textView40"
+                        app:layout_constraintTop_toTopOf="@+id/total" />
+
+                    <TextView
+                        android:id="@+id/textView32"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="¥"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/total"
+                        app:layout_constraintEnd_toStartOf="@+id/total" />
+
+                    <TextView
+                        android:id="@+id/total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="160000"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="@+id/createDate"
+                        app:layout_constraintTop_toBottomOf="@+id/createDate" />
+
+                    <TextView
+                        android:id="@+id/textView36"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="积分减免"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="@+id/textView33"
+                        app:layout_constraintTop_toTopOf="@+id/points" />
+
+                    <TextView
+                        android:id="@+id/pointsSymbol"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:text="- ¥"
+                        android:visibility="invisible"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toStartOf="@+id/points"
+                        app:layout_constraintTop_toTopOf="@+id/points" />
+
+                    <TextView
+
+                        android:id="@+id/points"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="无"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="@+id/total"
+                        app:layout_constraintTop_toBottomOf="@+id/total" />
+
+                    <CheckBox
+                        android:id="@+id/usePoints"
+                        android:layout_width="25dp"
+                        android:layout_height="26dp"
+                        android:layout_marginEnd="4dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/pointsTip"
+                        app:layout_constraintEnd_toStartOf="@+id/pointsTip"
+                        app:layout_constraintTop_toTopOf="@+id/pointsTip" />
+
+                    <TextView
+                        android:id="@+id/pointsTip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="使用100积分抵扣1元"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="@+id/points"
+                        app:layout_constraintTop_toBottomOf="@+id/points" />
+
+                    <TextView
+                        android:id="@+id/textView38"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="优惠券"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="@+id/textView36"
+                        app:layout_constraintTop_toTopOf="@+id/coupon" />
+
+                    <TextView
+                        android:id="@+id/couponSymbol"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="- ¥"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toStartOf="@+id/coupon"
+                        app:layout_constraintTop_toTopOf="@+id/coupon" />
+
+                    <TextView
+                        android:id="@+id/coupon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="60"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="@+id/pointsTip"
+                        app:layout_constraintTop_toBottomOf="@+id/pointsTip" />
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="36dp"
+                            android:layout_marginTop="18dp"
+                            android:layout_marginEnd="36dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/coupon"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="实付款："
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/realPay"
+                        app:layout_constraintStart_toStartOf="@+id/textView38"
+                        app:layout_constraintTop_toTopOf="@+id/realPay" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="¥"
+                        android:textSize="24sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/realPay"
+                        app:layout_constraintEnd_toStartOf="@+id/realPay"
+                        app:layout_constraintTop_toTopOf="@+id/realPay" />
+
+                    <TextView
+
+                        android:id="@+id/realPay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginBottom="28dp"
+                        android:text="233"
+                        android:textSize="28sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/recycler_view"
+                        app:layout_constraintTop_toBottomOf="@+id/recycler_view" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <com.manojbhadane.QButton
+                android:id="@+id/btn_pay"
+                android:layout_width="100dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="80dp"
+                android:layout_marginBottom="40dp"
+                android:gravity="center"
+                android:text="在线支付"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/remainTime"
+                app:layout_constraintVertical_bias="1.0"
+                app:qb_backgroundColor="@color/colorAccent" />
+
+            <com.manojbhadane.QButton
+                android:id="@+id/btn_cancel"
+                android:layout_width="100dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="80dp"
+                android:gravity="center"
+                android:text="取消提交"
+                app:qb_backgroundColor="@android:color/holo_red_light"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btn_pay" />
+
+            <TextView
+                android:id="@+id/remainTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="48dp"
+                android:text="请在30:00内支付"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card" />
+
+            <com.manojbhadane.QButton
+                android:id="@+id/btn_success"
+                android:layout_width="100dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="40dp"
+                android:gravity="center"
+                android:visibility="gone"
+                android:text="已取消"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/remainTime"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:qb_backgroundColor="@color/dialog_text" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>
+
