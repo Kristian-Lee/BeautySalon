@@ -1,5 +1,6 @@
 package com.example.beautysalon.ui.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -54,6 +55,7 @@ public class MyCommentActivity extends AppCompatActivity {
     }
 
     public void initData() {
+        mBinding.swipeLayout.setColorSchemeColors(Color.parseColor("#5872fd"));
         mUserDao = (UserDao) getIntent().getExtras().getSerializable("user");
         setSupportActionBar(mBinding.toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);

@@ -25,4 +25,5 @@ public class ReserveDao implements Serializable {
     float value;
     String services;
     int takeUp;
+    int isRewarded;
 }

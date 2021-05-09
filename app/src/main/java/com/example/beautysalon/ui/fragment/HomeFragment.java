@@ -208,45 +208,45 @@ public class HomeFragment extends Fragment {
 //                mBinding.recyclerView.loadMoreComplete();
 //            }
 //        });
-//        mSearchView.setOnQueryTextListener(new SimpleSearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                List<StylistDao> stylistDaoList = new ArrayList<>();
-//                List<EvaluationDao> evaluationDaoList = new ArrayList<>();
-//                for (int i = 0; i < mStylistDaoList.size(); i++) {
-//                    if (mStylistDaoList.get(i).getRealName().contains(query)) {
-//                        stylistDaoList.add(mStylistDaoList.get(i));
-//                        evaluationDaoList.add(mEvaluationDaoList.get(i));
-//                    }
-//                }
-//                if (stylistDaoList.size() <= 0) {
-//                    Toast.makeText(getActivity(), "没有找到符合要求的发型师数据", Toast.LENGTH_SHORT).show();
-//                    loadData(mStylistDaoList, mEvaluationDaoList, mUser.getUserId());
-//                } else {
-//                    loadData(stylistDaoList, evaluationDaoList, mUser.getUserId());
-//                }
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                List<StylistDao> stylistDaoList = new ArrayList<>();
-//                List<EvaluationDao> evaluationDaoList = new ArrayList<>();
-//                for (int i = 0; i < mStylistDaoList.size(); i++) {
-//                    if (mStylistDaoList.get(i).getRealName().contains(newText)) {
-//                        stylistDaoList.add(mStylistDaoList.get(i));
-//                        evaluationDaoList.add(mEvaluationDaoList.get(i));
-//                    }
-//                }
-//                loadData(stylistDaoList, evaluationDaoList, mUser.getUserId());
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextCleared() {
-//                return false;
-//            }
-//        });
+        mSearchView.setOnQueryTextListener(new SimpleSearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                List<StylistDao> stylistDaoList = new ArrayList<>();
+                List<EvaluationDao> evaluationDaoList = new ArrayList<>();
+                for (int i = 0; i < mStylistDaoList.size(); i++) {
+                    if (mStylistDaoList.get(i).getRealName().contains(query)) {
+                        stylistDaoList.add(mStylistDaoList.get(i));
+                        evaluationDaoList.add(mEvaluationDaoList.get(i));
+                    }
+                }
+                if (stylistDaoList.size() <= 0) {
+                    Toast.makeText(getActivity(), "没有找到符合要求的发型师数据", Toast.LENGTH_SHORT).show();
+                    loadData(mStylistDaoList, mEvaluationDaoList, mUser.getUserId());
+                } else {
+                    loadData(stylistDaoList, evaluationDaoList, mUser.getUserId());
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                List<StylistDao> stylistDaoList = new ArrayList<>();
+                List<EvaluationDao> evaluationDaoList = new ArrayList<>();
+                for (int i = 0; i < mStylistDaoList.size(); i++) {
+                    if (mStylistDaoList.get(i).getRealName().contains(newText)) {
+                        stylistDaoList.add(mStylistDaoList.get(i));
+                        evaluationDaoList.add(mEvaluationDaoList.get(i));
+                    }
+                }
+                loadData(stylistDaoList, evaluationDaoList, mUser.getUserId());
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextCleared() {
+                return false;
+            }
+        });
     }
 
     /**

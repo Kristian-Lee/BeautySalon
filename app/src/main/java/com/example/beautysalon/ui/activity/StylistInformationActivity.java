@@ -36,6 +36,7 @@ import com.example.beautysalon.dao.StylistDao;
 import com.example.beautysalon.databinding.ActivityStylistInformationBinding;
 import com.example.beautysalon.utils.NetClient;
 import com.example.beautysalon.utils.NetworkSettings;
+import com.example.beautysalon.utils.ToastUtils;
 import com.example.beautysalon.utils.Utils;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -332,7 +333,7 @@ public class StylistInformationActivity extends AppCompatActivity {
         mBinding.barbershopNameContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(StylistInformationActivity.this, "不可修改", Toast.LENGTH_SHORT).show();
+                ToastUtils.getInstance(getApplicationContext()).showShortToast("不可修改");
             }
         });
 

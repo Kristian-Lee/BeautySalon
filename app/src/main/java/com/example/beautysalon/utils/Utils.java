@@ -24,6 +24,7 @@ import okhttp3.MediaType;
 public class Utils {
     public static final MediaType MEDIA_TYPE = MediaType.parse("application/json;charset=utf-8");
     private static final Keccak.Digest512 digest512 = new Keccak.Digest512();
+    private static Toast toast;
 
     public static String encrypt(String origin) {
         return new String(Hex.encode(digest512.digest(origin.getBytes(StandardCharsets.UTF_8))));
@@ -206,5 +207,14 @@ public class Utils {
             result.add(JSON.parseObject(list.get(i).toString(), className));
         }
         return result;
+    }
+
+    public static void showToast(Context context, String content) {
+        if (toast == null) {
+            toast = Toast.makeText(context, content, Toast.LENGTH_SHORT);
+        } else {
+            toast.setText(content);
+        }
+        toast.show();
     }
 }

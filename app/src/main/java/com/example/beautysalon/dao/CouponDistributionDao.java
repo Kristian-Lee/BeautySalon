@@ -20,4 +20,5 @@ public class CouponDistributionDao implements Serializable {
     Date validDateTo;
     int type;
     int num;
+    int total;
 }

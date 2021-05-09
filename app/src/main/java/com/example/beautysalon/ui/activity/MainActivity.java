@@ -111,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("pageselected", position + "");
                 bottomNavigationView.setCurrentItem(position);
                 getSupportActionBar().setTitle(titleText[position]);
+                searchView.closeSearch();
+                invalidateOptionsMenu();
             }
 
             @Override
@@ -141,6 +143,8 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("navigation", position + "");
                     getSupportActionBar().setTitle(titleText[position]);
                     viewPager.setCurrentItem(position, false);
+                    searchView.closeSearch();
+                    invalidateOptionsMenu();
                 }
                 return true;
             }
@@ -236,6 +240,21 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        switch (binding.container.getCurrentItem()) {
+            case 0:
+                menu.findItem(R.id.action_search).setVisible(true);
+                break;
+            case 1:
+                menu.findItem(R.id.action_search).setVisible(false);
+                break;
+            default:
+                break;
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
     private void setupSearchView(Menu menu) {
         //找到并设置开启searchview的item
         MenuItem item = menu.findItem(R.id.action_search);
@@ -246,6 +265,7 @@ public class MainActivity extends AppCompatActivity {
         Point revealCenter = searchView.getRevealAnimationCenter();
         revealCenter.x -= DimensUtils.convertDpToPx(EXTRA_REVEAL_CENTER_PADDING, this);
     }
+
 
 //    //监听区分searchview的返回和其他按键返回
 //    @Override

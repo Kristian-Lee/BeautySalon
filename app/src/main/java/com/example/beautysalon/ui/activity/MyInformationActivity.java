@@ -238,6 +238,7 @@ public class MyInformationActivity extends AppCompatActivity {
                 Button button = bottom_qqedit_dialog.findViewById(R.id.bottom_edit_but);
                 EditText editText = bottom_qqedit_dialog.findViewById(R.id.bottom_edit_text);
                 editText.setText(mBinding.phone.getText().toString());
+                editText.setFocusable(View.FOCUSABLE);
                 editText.setInputType(InputType.TYPE_CLASS_PHONE);
                 editText.setHint("手机号");
                 button.setOnClickListener(new View.OnClickListener() {

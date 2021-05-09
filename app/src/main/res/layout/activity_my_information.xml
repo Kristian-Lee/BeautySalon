@@ -205,16 +205,4 @@
         app:qb_backgroundColor="@color/colorAccent"
         android:textColor="@color/white"
         android:text="保存修改"/>
-    <com.manojbhadane.QButton
-        android:id="@+id/btn_avatar"
-        android:layout_height="40dp"
-        android:layout_width="120dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="100dp"
-        app:qb_backgroundColor="@color/colorAccent"
-        android:textColor="@color/white"
-        android:text="上传头像"/>
-
 </LinearLayout>

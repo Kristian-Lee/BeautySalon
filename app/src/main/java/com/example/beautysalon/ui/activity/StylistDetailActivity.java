@@ -51,6 +51,8 @@ import com.example.beautysalon.utils.Utils;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.gyf.immersionbar.ImmersionBar;
+import com.jcodecraeer.xrecyclerview.ProgressStyle;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.mylhyl.circledialog.CircleDialog;
 
 import java.io.IOException;
@@ -134,12 +136,12 @@ public class StylistDetailActivity extends AppCompatActivity {
                         RestResponse restResponse = JSON.parseObject(responseBody.string(), RestResponse.class);
                         mMessage.what = restResponse.getCode();
                         if (mMessage.what == ResponseCode.REQUEST_COMMENT_DATA_SUCCESS) {
-                            mMap = JSON.parseObject(restResponse.getData().toString(), HashMap.class);
-                            BarbershopDao barbershopDao = JSON.parseObject(mMap.get("barbershop").toString(), BarbershopDao.class);
-                            mBarbershopDao = JSON.parseObject(mMap.get("barbershop").toString(), BarbershopDao.class);
-                            mCommentDaoList = Utils.jsonToList(CommentDao.class, (List) mMap.get("comment"));
-                            if (mMap.containsKey("reserve")) {
-                                mReserveDao = JSON.parseObject(mMap.get("reserve").toString(), ReserveDao.class);
+                            HashMap<String, Object> map = JSON.parseObject(restResponse.getData().toString(), HashMap.class);
+                            BarbershopDao barbershopDao = JSON.parseObject(map.get("barbershop").toString(), BarbershopDao.class);
+                            mBarbershopDao = JSON.parseObject(map.get("barbershop").toString(), BarbershopDao.class);
+                            mCommentDaoList = Utils.jsonToList(CommentDao.class, (List) map.get("comment"));
+                            if (map.containsKey("reserve")) {
+                                mReserveDao = JSON.parseObject(map.get("reserve").toString(), ReserveDao.class);
                                 mHandler.post(() -> {
                                     mBinding.btnReserve.setText("取消预约");
                                     mBinding.btnReserve.setBackgroundColor(Color.parseColor("#ea3d3d"));
@@ -153,6 +155,8 @@ public class StylistDetailActivity extends AppCompatActivity {
                                 mBinding.recyclerView.setLayoutManager(manager);
                                 mBinding.recyclerView.setAdapter(mAdapter);
                             });
+                        } else {
+                            System.out.println("sasasaffssdssfsd");
                         }
                     } else {
                         System.out.println("失败了啊");
@@ -193,6 +197,21 @@ public class StylistDetailActivity extends AppCompatActivity {
                             .setNegative("手滑点错", null)
                             .show(getSupportFragmentManager());
                 }
+            }
+        });
+        mBinding.recyclerView.setLoadingMoreEnabled(true);
+        mBinding.recyclerView.setLoadingMoreProgressStyle(ProgressStyle.LineScale);
+        mBinding.recyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(() -> {
+                    requestForData();
+                    mBinding.recyclerView.refreshComplete();
+                },400);
+            }
+            @Override
+            public void onLoadMore() {
+                mBinding.recyclerView.loadMoreComplete();
             }
         });
     }
@@ -412,11 +431,11 @@ public class StylistDetailActivity extends AppCompatActivity {
                                 RestResponse restResponse = JSON.parseObject(responseBody.string(), RestResponse.class);
                                 mMessage.what = restResponse.getCode();
                                 if (mMessage.what == ResponseCode.RESERVE_SUCCESS) {
-                                    mMap = JSON.parseObject(restResponse.getData().toString(), HashMap.class);
+                                    HashMap<String, Object> map = JSON.parseObject(restResponse.getData().toString(), HashMap.class);
                                     Bundle bundle = new Bundle();
-                                    UserDao userDao = JSON.parseObject(mMap.get("user").toString(), UserDao.class);
-                                    ReserveDao reserveDao = JSON.parseObject(mMap.get("order").toString(), ReserveDao.class);
-                                    String result = (String) mMap.get("points");
+                                    UserDao userDao = JSON.parseObject(map.get("user").toString(), UserDao.class);
+                                    ReserveDao reserveDao = JSON.parseObject(map.get("order").toString(), ReserveDao.class);
+                                    String result = (String) map.get("points");
                                     bundle.putSerializable("user", userDao);
                                     bundle.putSerializable("order", reserveDao);
                                     bundle.putString("result", result);
@@ -425,8 +444,8 @@ public class StylistDetailActivity extends AppCompatActivity {
                                     bundle.putString("barbershopName", mBarbershopDao.getBarbershopName());
 
                                     List<CouponDao> couponDaoList;
-                                    if (mMap.containsKey("coupon")) {
-                                        couponDaoList = Utils.jsonToList(CouponDao.class, JSON.parseObject(mMap.get("coupon").toString(), List.class));
+                                    if (map.containsKey("coupon")) {
+                                        couponDaoList = Utils.jsonToList(CouponDao.class, JSON.parseObject(map.get("coupon").toString(), List.class));
                                         ArrayList arrayList = new ArrayList();
                                         arrayList.add(couponDaoList);
                                         bundle.putParcelableArrayList("coupon", arrayList);
