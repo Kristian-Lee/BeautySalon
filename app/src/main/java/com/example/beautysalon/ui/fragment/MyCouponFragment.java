@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.alibaba.fastjson.JSON;
 import com.example.beautysalon.R;
@@ -88,17 +87,12 @@ public class MyCouponFragment extends Fragment {
     }
 
     public void setListeners() {
-        mBinding.swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                new Handler().postDelayed(() -> {
-                    requestForData();
-                    //刷新完成
-                    mBinding.swipeLayout.setRefreshing(false);
-                    Toast.makeText(getActivity(), "已更新", Toast.LENGTH_SHORT).show();
-                }, 400);
-            }
-        });
+        mBinding.swipeLayout.setOnRefreshListener(() -> new Handler().postDelayed(() -> {
+            requestForData();
+            //刷新完成
+            mBinding.swipeLayout.setRefreshing(false);
+            Toast.makeText(getActivity(), "已更新", Toast.LENGTH_SHORT).show();
+        }, 400));
     }
 
     public void loadData() {

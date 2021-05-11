@@ -186,6 +186,10 @@ public class Utils {
                 break;
             case ResponseCode.REQUEST_RESERVATION_COMMENT_DATA_FAILED:
                 message = "获取服务历史数据失败";
+                break;
+            case ResponseCode.REQUEST_INFORMATION_DATA_FAILED:
+                message = "获取资讯数据失败";
+                break;
         }
         return message;
     }

@@ -31,6 +31,7 @@ import com.example.beautysalon.dao.StylistDao;
 import com.example.beautysalon.dao.UserDao;
 import com.example.beautysalon.databinding.FragmentHomeBinding;
 import com.example.beautysalon.ui.activity.CouponReceiveActivity;
+import com.example.beautysalon.ui.activity.InformationActivity;
 import com.example.beautysalon.ui.activity.SignInActivity;
 import com.example.beautysalon.ui.activity.TopUpActivity;
 import com.example.beautysalon.ui.adapter.DemoAdapter;
@@ -65,7 +66,7 @@ public class HomeFragment extends Fragment {
 
     private XBanner mBanner4;
     private FragmentHomeBinding mBinding;
-    private LinearLayout mCouponContainer, mPointsContainer, mTopUpContainer;
+    private LinearLayout mCouponContainer, mPointsContainer, mTopUpContainer, mInformationContainer;
     private UserDao mUser;
     private View mHeadView;
     private Bundle mBundle = new Bundle();
@@ -172,6 +173,16 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), TopUpActivity.class);
+                Bundle bundle = getActivity().getIntent().getExtras();
+                UserDao userDao = (UserDao) bundle.getSerializable("user");
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+        mInformationContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), InformationActivity.class);
                 Bundle bundle = getActivity().getIntent().getExtras();
                 UserDao userDao = (UserDao) bundle.getSerializable("user");
                 intent.putExtras(bundle);
@@ -329,6 +340,7 @@ public class HomeFragment extends Fragment {
         mCouponContainer = mHeadView.findViewById(R.id.coupon_container);
         mPointsContainer = mHeadView.findViewById(R.id.points_container);
         mTopUpContainer = mHeadView.findViewById(R.id.top_up_container);
+        mInformationContainer = mHeadView.findViewById(R.id.information_container);
         mBanner4 = mHeadView.findViewById(R.id.banner4);
         mSearchView = getActivity().findViewById(R.id.searchView);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ScreenUtil.getScreenWidth(getContext()) / 2);

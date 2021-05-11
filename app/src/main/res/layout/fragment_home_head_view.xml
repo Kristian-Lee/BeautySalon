@@ -34,6 +34,29 @@
         android:baselineAligned="false">
 
         <LinearLayout
+            android:id="@+id/information_container"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/background"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/information" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:clickable="true"
+                android:text="资讯"
+                android:textColor="#686868" />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/points_container"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -76,29 +99,6 @@
                 android:layout_marginTop="8dp"
                 android:clickable="true"
                 android:text="领优惠券"
-                android:textColor="#686868" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/reservation_container"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/background"
-            android:gravity="center"
-            android:orientation="vertical" >
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/unpaid_reservations" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:clickable="true"
-                android:text="预约"
                 android:textColor="#686868" />
         </LinearLayout>
 

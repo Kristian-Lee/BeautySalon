@@ -54,4 +54,5 @@ public class NetworkSettings {
     public static final String UPDATE_STYLIST = LINK + "/update/stylist";
     public static final String USER_COMMENT = LINK + "/stylist/comment";
     public static final String RESERVATION_COMMENT_DATA = LINK + "/reservation/comment/data";
+    public static final String INFORMATION_DATA = LINK + "/information/data";
 }

@@ -15,7 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BeautySalon"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.HistoryReservationActivity"></activity>
+        <activity android:name=".ui.activity.InformationActivity"></activity>
+        <activity android:name=".ui.activity.InformationDetailActivity" />
+        <activity android:name=".ui.activity.HistoryReservationActivity" />
         <activity android:name=".ui.activity.UserCommentActivity" />
         <activity android:name=".ui.activity.StylistInformationActivity" />
         <activity android:name=".ui.activity.MyCommentActivity" />
