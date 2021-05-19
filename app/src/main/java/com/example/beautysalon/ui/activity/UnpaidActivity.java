@@ -94,6 +94,12 @@ public class UnpaidActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        requestForData();
+    }
+
     public void requestForData() {
         UserDao userDao = (UserDao) getIntent().getExtras().getSerializable("user");
         NetClient.getNetClient().callNet(NetworkSettings.RESERVATION_DATA, "type", "unpaid",

@@ -168,4 +168,10 @@ public class MyReservationFragment extends Fragment {
                     }
                 });
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        requestForData();
+    }
 }

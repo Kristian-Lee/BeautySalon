@@ -119,6 +119,12 @@ public class StylistDetailActivity extends AppCompatActivity {
                 .init();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        requestForData();
+    }
+
     private void requestForData() {
         NetClient.getNetClient().callNet(NetworkSettings.COMMENT_DATA,
                 RequestBody.create(JSON.toJSONString(mMap), mediaType), new NetClient.MyCallBack() {
@@ -145,6 +151,11 @@ public class StylistDetailActivity extends AppCompatActivity {
                                 mHandler.post(() -> {
                                     mBinding.btnReserve.setText("取消预约");
                                     mBinding.btnReserve.setBackgroundColor(Color.parseColor("#ea3d3d"));
+                                });
+                            } else {
+                                mHandler.post(() -> {
+                                    mBinding.btnReserve.setText("预约");
+                                    mBinding.btnReserve.setBackgroundColor(Color.parseColor("#7b8efd"));
                                 });
                             }
                             mHandler.post(() -> {

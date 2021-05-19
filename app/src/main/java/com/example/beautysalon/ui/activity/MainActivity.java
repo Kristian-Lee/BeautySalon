@@ -336,12 +336,12 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onDragStateChanged(int dragState, Badge badge, View targetView) {
                         if (Badge.OnDragStateChangedListener.STATE_SUCCEED == dragState) {
-                            Toast.makeText(MainActivity.this, "已读", Toast.LENGTH_SHORT).show();
-                            if (binding.bottomNavigationView.getCurrentItem() == 2) {
-                                ((MyFragment) fragments.get(2)).hideBadge();
-                            } else {
-                                ((MyFragment) fragments.get(2)).setBadgeNum(0);
-                            }
+//                            Toast.makeText(MainActivity.this, "已读", Toast.LENGTH_SHORT).show();
+//                            if (binding.bottomNavigationView.getCurrentItem() == 1) {
+//                                ((MyFragment) fragments.get(2)).hideBadge();
+//                            } else {
+//                                ((MyFragment) fragments.get(2)).setBadgeNum(0);
+//                            }
                         }
                     }
                 });

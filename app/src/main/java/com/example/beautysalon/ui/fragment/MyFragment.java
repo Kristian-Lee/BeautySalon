@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
@@ -21,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.example.beautysalon.R;
 import com.example.beautysalon.ResponseCode;
 import com.example.beautysalon.RestResponse;
+import com.example.beautysalon.dao.ReserveDao;
 import com.example.beautysalon.dao.UserDao;
 import com.example.beautysalon.databinding.FragmentMyBinding;
 import com.example.beautysalon.ui.activity.MyBalanceActivity;
@@ -35,6 +35,8 @@ import com.example.beautysalon.utils.NetworkSettings;
 import com.example.beautysalon.utils.Utils;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -58,7 +60,7 @@ public class MyFragment extends Fragment {
     private static MyFragment instance;
     private final Message mMessage = new Message();
     private final Handler mHandler = new Handler(Looper.getMainLooper());
-    private Integer mBadgeNum;
+    private Integer mBadgeNum = 0;
 
     public static synchronized MyFragment getInstance() {
         if (instance == null) {
@@ -152,25 +154,6 @@ public class MyFragment extends Fragment {
     public void onResume() {
         super.onResume();
         initData();
-        if (mBadge != null) {
-            if (mBadgeNum == 0) {
-                mBadge.hide(true);
-            } else {
-                mHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        mBadge.setBadgeNumber(mBadgeNum);
-                    }
-                });
-            }
-        } else if (mBadgeNum > 0){
-            addBadgeAt(mBadgeNum);
-        }
-
-        if (mBadge == null) {
-            System.out.println("badge不存在");
-        }
-        System.out.println(mBadgeNum);
 //        if (mBadgeNum > 0) {
 //            addBadgeAt(mBadgeNum);
 //        }
@@ -212,6 +195,51 @@ public class MyFragment extends Fragment {
                         }
                     }
                 });
+        NetClient.getNetClient().callNet(NetworkSettings.RESERVATION_DATA, "type", "unpaid",
+                RequestBody.create(JSON.toJSONString(mUserDao), Utils.MEDIA_TYPE),
+                new NetClient.MyCallBack() {
+                    @Override
+                    public void onFailure(int code) {
+                        mMessage.what = ResponseCode.REQUEST_RESERVATION_DATA_FAILED;
+                        mHandler.post(()-> Utils.showMessage(getActivity(), mMessage));
+                    }
+
+                    @Override
+                    public void onResponse(Response response) throws IOException {
+                        if (response.isSuccessful()) {
+                            ResponseBody responseBody = response.body();
+                            if (responseBody != null) {
+                                RestResponse restResponse = JSON.parseObject(responseBody.string(), RestResponse.class);
+                                mMessage.what = restResponse.getCode();
+                                if (mMessage.what == ResponseCode.REQUEST_RESERVATION_DATA_SUCCESS) {
+                                    HashMap<String, Object> map = new HashMap<>();
+                                    map = JSON.parseObject(restResponse.getData().toString(), HashMap.class);
+                                    List<ReserveDao> reserveDaoList = Utils.jsonToList(ReserveDao.class,
+                                            JSON.parseObject(map.get("reserve").toString(), List.class));
+                                    setBadgeNum(reserveDaoList.size());
+                                    mHandler.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            if (mBadge != null) {
+                                                if (mBadgeNum == 0) {
+                                                    mBadge.hide(true);
+                                                } else {
+                                                    mBadge.setBadgeNumber(mBadgeNum);
+                                                }
+                                            } else if (mBadgeNum > 0){
+                                                addBadgeAt(mBadgeNum);
+                                            }
+
+                                            if (mBadge == null) {
+                                                System.out.println("badge不存在");
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    }
+                });
     }
 
     private Badge addBadgeAt(int number) {
@@ -223,8 +251,8 @@ public class MyFragment extends Fragment {
                 .setOnDragStateChangedListener(new Badge.OnDragStateChangedListener() {
                     @Override
                     public void onDragStateChanged(int dragState, Badge badge, View targetView) {
-                        if (Badge.OnDragStateChangedListener.STATE_SUCCEED == dragState)
-                            Toast.makeText(getActivity(), "已读", Toast.LENGTH_SHORT).show();
+//                        if (Badge.OnDragStateChangedListener.STATE_SUCCEED == dragState)
+//                            Toast.makeText(getActivity(), "已读", Toast.LENGTH_SHORT).show();
                     }
                 });
         return mBadge;

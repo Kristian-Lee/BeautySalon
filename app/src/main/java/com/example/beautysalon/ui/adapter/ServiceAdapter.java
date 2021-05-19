@@ -50,7 +50,7 @@ public class ServiceAdapter extends BaseQuickAdapter<ServicesDao, BaseViewHolder
             @Override
             public void onClick(View v) {
                 int originTime = Integer.parseInt(takeUp.getText().toString());
-                int originValue = Integer.parseInt(value.getText().toString());
+                float originValue = Float.parseFloat(value.getText().toString());
                 if (selectList.contains(servicesDao)) {
                     selectList.remove(servicesDao);
 

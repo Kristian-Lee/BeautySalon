@@ -2,12 +2,10 @@ package com.example.beautysalon.ui.fragment;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,15 +15,12 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.viewpager.widget.ViewPager;
 
 import com.alibaba.fastjson.JSON;
-import com.blankj.utilcode.util.LogUtils;
 import com.example.beautysalon.R;
 import com.example.beautysalon.ResponseCode;
 import com.example.beautysalon.RestResponse;
 import com.example.beautysalon.ScreenUtil;
-import com.example.beautysalon.TuchongEntity;
 import com.example.beautysalon.dao.EvaluationDao;
 import com.example.beautysalon.dao.StylistDao;
 import com.example.beautysalon.dao.UserDao;
@@ -39,13 +34,8 @@ import com.example.beautysalon.utils.NetClient;
 import com.example.beautysalon.utils.NetworkSettings;
 import com.example.beautysalon.utils.Utils;
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.ferfalk.simplesearchview.SimpleSearchView;
-import com.google.gson.Gson;
-import com.luck.picture.lib.tools.ToastUtils;
 import com.stx.xhb.androidx.XBanner;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -53,7 +43,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-import okhttp3.Call;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
@@ -106,49 +95,49 @@ public class HomeFragment extends Fragment {
         mBinding = FragmentHomeBinding.inflate(inflater);
         mIsOk = true;
         initData();
-        initBanner(mBanner4);
+//        initBanner(mBanner4);
         setListeners();
         return mBinding.getRoot();
     }
-    private void initBanner(XBanner banner) {
-        //设置广告图片点击事件
-        banner.setOnItemClickListener(new XBanner.OnItemClickListener() {
-            @Override
-            public void onItemClick(XBanner banner, Object model, View view, int position) {
-                LogUtils.i("click pos:" + position);
-                ToastUtils.s(getActivity(), ("点击了第" + (position + 1) + "图片"));
-            }
-        });
-        //加载广告图片
-        banner.loadImage(new XBanner.XBannerAdapter() {
-            @Override
-            public void loadBanner(XBanner banner, Object model, View view, int position) {
-                //此处适用Fresco加载网络图片，可自行替换自己的图片加载框架
-                SimpleDraweeView draweeView = (SimpleDraweeView) view;
-                TuchongEntity.FeedListBean.EntryBean listBean = ((TuchongEntity.FeedListBean.EntryBean) model);
-                String url = "https://photo.tuchong.com/" + listBean.getImages().get(0).getUser_id() + "/f/" + listBean.getImages().get(0).getImg_id() + ".jpg";
-                draweeView.setImageURI(Uri.parse(url));
-//                加载本地图片展示
-//                ((ImageView) view).setImageResource(((LocalImageInfo) model).getXBannerUrl());
-            }
-        });
-        banner.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i1) {
-
-            }
-
-            @Override
-            public void onPageSelected(int i) {
-                Log.i("onPageSelected===>", i + "");
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int i) {
-
-            }
-        });
-    }
+//    private void initBanner(XBanner banner) {
+//        //设置广告图片点击事件
+//        banner.setOnItemClickListener(new XBanner.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(XBanner banner, Object model, View view, int position) {
+//                LogUtils.i("click pos:" + position);
+//                ToastUtils.s(getActivity(), ("点击了第" + (position + 1) + "图片"));
+//            }
+//        });
+//        //加载广告图片
+//        banner.loadImage(new XBanner.XBannerAdapter() {
+//            @Override
+//            public void loadBanner(XBanner banner, Object model, View view, int position) {
+//                //此处适用Fresco加载网络图片，可自行替换自己的图片加载框架
+//                SimpleDraweeView draweeView = (SimpleDraweeView) view;
+//                TuchongEntity.FeedListBean.EntryBean listBean = ((TuchongEntity.FeedListBean.EntryBean) model);
+//                String url = "https://photo.tuchong.com/" + listBean.getImages().get(0).getUser_id() + "/f/" + listBean.getImages().get(0).getImg_id() + ".jpg";
+//                draweeView.setImageURI(Uri.parse(url));
+////                加载本地图片展示
+////                ((ImageView) view).setImageResource(((LocalImageInfo) model).getXBannerUrl());
+//            }
+//        });
+//        banner.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int i, float v, int i1) {
+//
+//            }
+//
+//            @Override
+//            public void onPageSelected(int i) {
+//                Log.i("onPageSelected===>", i + "");
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int i) {
+//
+//            }
+//        });
+//    }
 
     void setListeners() {
         mCouponContainer.setOnClickListener(new View.OnClickListener() {
@@ -297,40 +286,40 @@ public class HomeFragment extends Fragment {
 
 
 
-        //加载网络图片资源
-        String url = "https://api.tuchong.com/2/wall-paper/app";
-        OkHttpUtils
-                .get()
-                .url(url)
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        Toast.makeText(getActivity(), "加载广告数据失败", Toast.LENGTH_SHORT).show();
-                    }
-
-
-                    @Override
-                    public void onResponse(String response, int id) {
-                        TuchongEntity advertiseEntity = new Gson().fromJson(response, TuchongEntity.class);
-                        List<TuchongEntity.FeedListBean> others = advertiseEntity.getFeedList();
-                        List<TuchongEntity.FeedListBean.EntryBean> data = new ArrayList<>();
-                        for (int i = 0; i < others.size(); i++) {
-                            TuchongEntity.FeedListBean feedListBean = others.get(i);
-                            if ("post".equals(feedListBean.getType())) {
-                                data.add(feedListBean.getEntry());
-                            }
-                        }
-
-
-                        //刷新数据之后，需要重新设置是否支持自动轮播
-                        mBanner4.setAutoPlayAble(data.size() > 1);
-                        mBanner4.setIsClipChildrenMode(true);
-                        mBanner4.setBannerData(R.layout.layout_fresco_imageview, data);
-                        mBanner4.getViewPager().setOffscreenPageLimit(1);
-
-                    }
-                });
+//        //加载网络图片资源
+//        String url = "https://api.tuchong.com/2/wall-paper/app";
+//        OkHttpUtils
+//                .get()
+//                .url(url)
+//                .build()
+//                .execute(new StringCallback() {
+//                    @Override
+//                    public void onError(Call call, Exception e, int id) {
+//                        Toast.makeText(getActivity(), "加载广告数据失败", Toast.LENGTH_SHORT).show();
+//                    }
+//
+//
+//                    @Override
+//                    public void onResponse(String response, int id) {
+//                        TuchongEntity advertiseEntity = new Gson().fromJson(response, TuchongEntity.class);
+//                        List<TuchongEntity.FeedListBean> others = advertiseEntity.getFeedList();
+//                        List<TuchongEntity.FeedListBean.EntryBean> data = new ArrayList<>();
+//                        for (int i = 0; i < others.size(); i++) {
+//                            TuchongEntity.FeedListBean feedListBean = others.get(i);
+//                            if ("post".equals(feedListBean.getType())) {
+//                                data.add(feedListBean.getEntry());
+//                            }
+//                        }
+//
+//
+//                        //刷新数据之后，需要重新设置是否支持自动轮播
+//                        mBanner4.setAutoPlayAble(data.size() > 1);
+//                        mBanner4.setIsClipChildrenMode(true);
+//                        mBanner4.setBannerData(R.layout.layout_fresco_imageview, data);
+//                        mBanner4.getViewPager().setOffscreenPageLimit(1);
+//
+//                    }
+//                });
     }
 
     private void initData() {
@@ -341,10 +330,10 @@ public class HomeFragment extends Fragment {
         mPointsContainer = mHeadView.findViewById(R.id.points_container);
         mTopUpContainer = mHeadView.findViewById(R.id.top_up_container);
         mInformationContainer = mHeadView.findViewById(R.id.information_container);
-        mBanner4 = mHeadView.findViewById(R.id.banner4);
+//        mBanner4 = mHeadView.findViewById(R.id.banner4);
         mSearchView = getActivity().findViewById(R.id.searchView);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ScreenUtil.getScreenWidth(getContext()) / 2);
-        mBanner4.setLayoutParams(layoutParams);
+//        mBanner4.setLayoutParams(layoutParams);
         if (mIsOk && mIsFirst) { // 加载数据时判断是否完成view的初始化，以及是不是第一次加载此数据
             requestForData();
             mIsFirst = false; // 加载第一次数据后改变状态，后续不再重复加载

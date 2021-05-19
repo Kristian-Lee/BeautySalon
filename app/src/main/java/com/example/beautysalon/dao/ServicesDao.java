@@ -14,6 +14,6 @@ public class ServicesDao implements Serializable {
     int id;
     int barbershopId;
     String name;
-    int value;
+    float value;
     int time;
 }

@@ -7,23 +7,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <com.stx.xhb.androidx.XBanner
-        android:id="@+id/banner4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:AutoPlayTime="3000"
-        app:bannerBottomMargin="30dp"
-        app:clipChildrenLeftMargin="10dp"
-        app:isAutoPlay="false"
-        app:isClipChildrenMode="true"
-        app:isHandLoop="true"
-        app:isShowIndicatorOnlyOne="true"
-        app:isShowNumberIndicator="false"
-        app:pageChangeDuration="800"
-        app:pointsContainerBackground="@android:color/transparent"
-        app:pointsPosition="CENTER" />
+<!--    &lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;-->
+<!--    <com.stx.xhb.androidx.XBanner-->
+<!--        android:id="@+id/banner4"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        app:AutoPlayTime="3000"-->
+<!--        app:bannerBottomMargin="30dp"-->
+<!--        app:clipChildrenLeftMargin="10dp"-->
+<!--        app:isAutoPlay="false"-->
+<!--        app:isClipChildrenMode="true"-->
+<!--        app:isHandLoop="true"-->
+<!--        app:isShowIndicatorOnlyOne="true"-->
+<!--        app:isShowNumberIndicator="false"-->
+<!--        app:pageChangeDuration="800"-->
+<!--        app:pointsContainerBackground="@android:color/transparent"-->
+<!--        app:pointsPosition="CENTER" />-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"

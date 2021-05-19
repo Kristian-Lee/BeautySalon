@@ -19,7 +19,7 @@ public class NetworkSettings {
 //    public static final String RECEIVE_POINTS = "http://"+ HOST +":"+PORT + "/receive/points";
 //    public static final String POINTS_DATA = "http://"+ HOST +":"+PORT + "/points/data";
 
-    public static final String LINK = "http://192.168.0.101:8080";
+    public static final String LINK = "http://192.168.43.81:8080";
 
 //    public static final String LINK = "https://beautysalon.test.utools.club";
     public static final String SIGN_UP = LINK + "/signUp";
@@ -55,4 +55,5 @@ public class NetworkSettings {
     public static final String USER_COMMENT = LINK + "/stylist/comment";
     public static final String RESERVATION_COMMENT_DATA = LINK + "/reservation/comment/data";
     public static final String INFORMATION_DATA = LINK + "/information/data";
+    public static final String REQUEST_RESERVE_STATUS = LINK + "/reserve/status";
 }

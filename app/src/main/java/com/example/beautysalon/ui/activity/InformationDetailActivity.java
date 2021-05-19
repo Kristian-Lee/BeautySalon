@@ -77,6 +77,7 @@ public class InformationDetailActivity extends AppCompatActivity {
     @SuppressLint("ClickableViewAccessibility")
     private void initData() {
         mInformationDao = (InformationDao) getIntent().getExtras().get("information");
+        mBinding.titleText.setText(mInformationDao.getTitle());
         setSupportActionBar(mBinding.toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

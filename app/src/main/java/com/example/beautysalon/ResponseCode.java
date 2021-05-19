@@ -32,6 +32,7 @@ public class ResponseCode {
     public static final int REQUEST_USER_COMMENT_DATA_SUCCESS = 2028;
     public static final int REQUEST_RESERVATION_COMMENT_DATA_SUCCESS = 2029;
     public static final int REQUEST_INFORMATION_DATA_SUCCESS = 2030;
+    public static final int REQUEST_RESERVE_STATUS_SUCCESS = 2031;
 
 
     public static final int SIGN_IN_FAILED = 3000;
@@ -66,7 +67,7 @@ public class ResponseCode {
     public static final int REQUEST_USER_COMMENT_DATA_FAILED = 3029;
     public static final int REQUEST_RESERVATION_COMMENT_DATA_FAILED = 3030;
     public static final int REQUEST_INFORMATION_DATA_FAILED = 3031;
-
+    public static final int REQUEST_RESERVE_STATUS_FAILED = 3032;
 
 
     public static final int EMPTY_RESPONSE = 4000;

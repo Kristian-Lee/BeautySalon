@@ -54,6 +54,7 @@ public class PayActivity extends AppCompatActivity implements TimeCount.CallBack
     private UserDao mUserDao;
     private TimeCount mTimeCount;
     private CouponPayAdapter mAdapter;
+    private boolean isFirst = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -293,10 +294,71 @@ public class PayActivity extends AppCompatActivity implements TimeCount.CallBack
                 });
     }
 
+    private void checkStatus() {
+//        NetClient.getNetClient().callNet(NetworkSettings.REQUEST_RESERVE_STATUS,
+//                RequestBody.create(JSON.toJSONString(mReserveDao.getId()), Utils.MEDIA_TYPE),
+//                new NetClient.MyCallBack() {
+//                    @Override
+//                    public void onFailure(int code) {
+//                        mMessage.what = ResponseCode.REQUEST_RESERVE_STATUS_FAILED;
+//                        mHandler.post(()-> Utils.showMessage(PayActivity.this, mMessage));
+//                    }
+//
+//                    @Override
+//                    public void onResponse(Response response) throws IOException {
+//                        if (response.isSuccessful()) {
+//                            ResponseBody responseBody = response.body();
+//                            System.out.println("步骤1");
+//                            if (responseBody != null) {
+//                                System.out.println("步骤2");
+//                                RestResponse restResponse = JSON.parseObject(responseBody.string(), RestResponse.class);
+//                                mMessage.what = restResponse.getCode();
+//                                if (mMessage.what == ResponseCode.REQUEST_RESERVE_STATUS_SUCCESS) {
+//                                    System.out.println("步骤3");
+//                                    String result = (String) restResponse.getData();
+//                                    if (result.equals("paid")) {
+//                                        System.out.println("已经支付过了");
+//                                        mHandler.post(()-> {
+//
+//                                        });
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                });
+        mBinding.btnCancel.setVisibility(View.GONE);
+        mBinding.btnPay.setVisibility(View.GONE);
+        mBinding.btnSuccess.setText("已支付，返回首页");
+        mBinding.btnSuccess.setBackgroundColor(Color.parseColor("#7b8efd"));
+        mBinding.btnSuccess.setVisibility(View.VISIBLE);
+        mBinding.remainTime.setVisibility(View.INVISIBLE);
+        mBinding.btnSuccess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PayActivity.this, MainActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("user", mUserDao);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+        mTimeCount.cancel();
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mTimeCount.cancel();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!isFirst) {
+            checkStatus();
+        }
+        isFirst = false;
     }
 
     @Override
